@@ -411,6 +411,8 @@ if __name__ == "__main__":
             string = newString
             recursions -= 1
         print('Length of string after 40 iterations is:'+str(len(string)))
+    elif command == '11':
+        import Day11
             
 print('Exiting script...')
 SystemExit.mro()
