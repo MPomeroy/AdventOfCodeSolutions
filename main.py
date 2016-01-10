@@ -6,33 +6,18 @@ __author__ = "Mason"
 __date__ = "$17-Dec-2015 7:20:56 PM$"
 
 import sys
+import importlib
 
 if __name__ == "__main__":
     print("Please enter the day of the puzzle to solve(between 4 and 10):")
     command = input('--> ')
-    if command == '4':
-        import Day4
-        
-    elif command == '5':
-        import Day5
-            
-    elif command == '6':
-        import Day6
-        
-    elif command == '7':
-        import Day7
-        
-    elif command == '8':
-        import Day8
-        
-    elif command == '9':
-        import Day9
-        
-    elif command == '10':
-        import Day10
-        
-    elif command == '11':
-        import Day11
+    if int(command) in range(4, 8):
+        try:
+            importlib.import_module('Day'+command)
+        except importError:
+                print('You gave a valid day, but no solution was found...')
+    else:
+        print('No solution found for that day!')
             
 print('Exiting script...')
 SystemExit.mro()
