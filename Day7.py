@@ -6,19 +6,23 @@ __author__ = "Mason"
 __date__ = "$9-Jan-2016 6:58:02 PM$"
 
 def main():
+    import os.path
     def isInt(s):
         try: 
             int(s)
             return True
         except ValueError:
             return False
-
-    print('Reading in from file.')
+        
     #get the puzzle input
-    commandSequence = {}
+    if not os.path.isfile('Input/Day7.txt'):
+        print('Input file is required for Day 7! Please place your input in Day7.txt in the Input subfolder and try again.')
+        os._exit(1)
     inputFile = open('Input/Day7.txt', 'r')
     commandList = inputFile.read()
     commandList = commandList.split("\n")
+    
+    commandSequence = {}
     i = 0
     for command in commandList:
         commandSequence[i] = command
