@@ -6,16 +6,13 @@ __author__ = "Mason"
 __date__ = "$23-Jan-2016 2:03:50 PM$"
 
 def main():
-    import os.path
     import itertools
+    import FileLoadWrapper
     
     puzzleNumber = input('Enter the puzzle number:')
     
-    if not os.path.isfile('Input/Day13.txt'):
-        print('Input file is required for Day 13! Please place your input in Day13.txt in the Input subfolder and try again.')
-        os._exit(1)
-    file = open('Input/Day13.txt', 'r')
-    inputFile = file.read();
+    loader = FileLoadWrapper.FileLoader('Input', '13')
+    inputFile = loader.read();
     
     lines = inputFile.split('\n')
     

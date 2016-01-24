@@ -6,7 +6,7 @@ __author__ = "Mason"
 __date__ = "$9-Jan-2016 6:57:17 PM$"
 
 def main():
-    import os.path
+    import FileLoadWrapper
     import re
     # Set up a map of the christmas lights
     numOfLights = list(range(1000))
@@ -16,11 +16,8 @@ def main():
         for y in numOfLights:
             lightArray[x][y] = 0
     
-    if not os.path.isfile('Input/Day6.txt'):
-        print('Input file is required for Day 6! Please place your input in Day6.txt in the Input subfolder and try again.')
-        os._exit(1)
-    inputFile = open('Input/Day6.txt')
-    inputString = inputFile.read()
+    loader = FileLoadWrapper.FileLoader('Input', '6')
+    inputString = loader.read()
     inputCommands = inputString.split('\n')
     
     puzzleNumber6 = input('Enter the puzzle Number:')

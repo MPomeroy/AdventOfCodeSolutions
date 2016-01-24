@@ -7,7 +7,7 @@ __date__ = "$24-Dec-2015 6:16:30 PM$"
 __name__ = 'Day12'
 
 def main():
-    import os.path
+    import FileLoadWrapper
     import json
     
     puzzleNumber = input('Puzzle Number:')
@@ -15,20 +15,12 @@ def main():
     runTestCase = input('Run test case?(y/n) ->')
     if runTestCase == 'y':
         if puzzleNumber == '1':
-            if not os.path.isfile('TestCase/Day12.txt'):
-                print('Input file is required for Day 12! Please place your input in Day12.txt in the TestCase subfolder and try again.')
-                os._exit(1)
-            file = open('TestCase/Day12.txt', 'r')
+            loader = FileLoadWrapper.FileLoader('TestCase', '12')
         else:
-            if not os.path.isfile('TestCase/Day12-2.txt'):
-                print('Input file is required for Day 12! Please place your input in Day12-2.txt in the TestCase subfolder and try again.')
-                os._exit(1)
-            file = open('TestCase/Day12-2.txt', 'r')
+            loader = FileLoadWrapper.FileLoader('TestCase', '12-2')
     else:
-        if not os.path.isfile('Input/Day12.txt'):
-            print('Input file is required for Day 12! Please place your input in Day12.txt in the Input subfolder and try again.')
-            os._exit(1)
-        file = open('Input/Day12.txt', 'r')
+        loader = FileLoadWrapper.FileLoader('Input', '12')
+    file = loader.read();
     rawJSON = file.read()
     
     jsonArray = json.loads(rawJSON)

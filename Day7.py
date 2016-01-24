@@ -6,7 +6,8 @@ __author__ = "Mason"
 __date__ = "$9-Jan-2016 6:58:02 PM$"
 
 def main():
-    import os.path
+    import FileLoadWrapper
+    
     def isInt(s):
         try: 
             int(s)
@@ -15,11 +16,8 @@ def main():
             return False
         
     #get the puzzle input
-    if not os.path.isfile('Input/Day7.txt'):
-        print('Input file is required for Day 7! Please place your input in Day7.txt in the Input subfolder and try again.')
-        os._exit(1)
-    inputFile = open('Input/Day7.txt', 'r')
-    commandList = inputFile.read()
+    loader = FileLoadWrapper.FileLoader('Input', '7')
+    commandList = loader.read()
     commandList = commandList.split("\n")
     
     commandSequence = {}

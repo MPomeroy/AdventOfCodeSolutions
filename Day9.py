@@ -6,15 +6,12 @@ __author__ = "Mason"
 __date__ = "$9-Jan-2016 7:07:15 PM$"
 
 def main():
-    import os.path
+    import FileLoadWrapper
     import itertools
         
     print('This Day 9 solution solves both puzzle 1 and 2 simultaneously.')
-    if not os.path.isfile('Input/Day9.txt'):
-        print('Input file is required for Day 9! Please place your input in Day9.txt in the Input subfolder and try again.')
-        os._exit(1)
-    file = open('Input/Day9.txt', 'r')
-    inputText = file.read()
+    loader = FileLoadWrapper.FileLoader('Input', '9')
+    inputText = loader.read()
 
     lines = inputText.split('\n')
     cachedDistance = {}

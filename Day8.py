@@ -6,23 +6,17 @@ __author__ = "Mason"
 __date__ = "$9-Jan-2016 6:59:33 PM$"
 
 def main():
-    import os.path
+    import FileLoadWrapper
     import binascii
         
     puzzleNumber = input('Which Puzzle number?')
 
     runTestCase = input("Run the test case?(y/n):")
     if(runTestCase == 'y' or runTestCase == 'Y'):
-        if not os.path.isfile('TestCase/Day7.txt'):
-            print('Input file is required for Day 7! Please place your input in Day7.txt in the TestCase subfolder and try again.')
-            os._exit(1)
-        file = open('TestCase/Day8.txt', 'r')
+        loader = FileLoadWrapper.FileLoader('TestCase', '8')
     if(runTestCase == 'n' or runTestCase == 'N'):
-        if not os.path.isfile('Input/Day8.txt'):
-            print('Input file is required for Day 8! Please place your input in Day8.txt in the Input subfolder and try again.')
-            os._exit(1)
-        file = open('Input/Day8.txt', 'r')
-    firstReading = file.read()
+        loader = FileLoadWrapper.FileLoader('Input', '8')
+    firstReading = loader.read()
 
     strForReading = firstReading
     strForReading = strForReading.replace("\n", '')

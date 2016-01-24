@@ -6,7 +6,7 @@ __author__ = "Mason"
 __date__ = "$9-Jan-2016 6:56:07 PM$"
 
 def main():
-    import os.path
+    import FileLoadWrapper
     import re
     ThreeVowelRe = re.compile("[a,e,i,o,u].*[a,e,i,o,u].*[a,e,i,o,u]")
     TwoInARowRe = re.compile(r'([a-z])\1{1,}')
@@ -18,11 +18,8 @@ def main():
 
     niceStrings = 0
     #entryString = "uurcxstgmygtbstg"
-    if not os.path.isfile('Input/Day5.txt'):
-        print('Input file is required for Day 5! Please place your input in Day5.txt in the Input subfolder and try again.')
-        os._exit(1)
-    inputFile = open('Input/Day5.txt', 'r')
-    entryString = inputFile.read()
+    loader = FileLoadWrapper.FileLoader('Input', '5')
+    entryString = loader.read()
 
     stringList = entryString.split('\n')
     puzzleNumber = input('Enter the puzzle Number:')
