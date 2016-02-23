@@ -12,7 +12,7 @@ if __name__ == "__main__":
     print("Please enter the day of the puzzle to solve(between 4 and 10):")
     
     command = input('--> ')
-    if int(command) in list(range(4, 14)):
+    if int(command) in list(range(4, 15)):
         try:
             importlib.import_module('Day'+command)
         except importError:
