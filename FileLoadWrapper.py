@@ -12,7 +12,7 @@ class FileLoader:
         if not os.path.isfile(TCorI+'/Day'+dayNum+'.txt'):
             print('Input file is required for Day '+dayNum+'! Please place your input in Day'+dayNum+'.txt in the Input subfolder and try again.')
             os._exit(1)
-        self.file = open('Input/Day'+dayNum+'.txt', 'r')
+        self.file = open(TCorI+'/Day'+dayNum+'.txt', 'r')
         
     def read(self):
         return(self.file.read());
