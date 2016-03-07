@@ -25,7 +25,14 @@ def main():
     
     reindeers = inputFile.split('\n')
     
-    
+    def is_int(s):
+        try: 
+            int(s)
+            return True
+        except ValueError:
+            return False
+        except TypeError:
+            return False
     
     if(puzzleNumber == '1'):
         highestDistance = 0
@@ -92,7 +99,7 @@ def main():
             reindeerScores[number] = 0
             
         numberOfSeconds = numberOfSeconds-1
-        while(numberOfSeconds >= 0):
+        while(numberOfSeconds > 0):
             highestDistance = 0
             farthestReindeer = 0
             #need to handle farthest reindeer being tied
@@ -100,7 +107,18 @@ def main():
                 if(distances[numberOfSeconds] > highestDistance):
                     highestDistance = distances[numberOfSeconds]
                     farthestReindeer = reindeerNum
-            reindeerScores[farthestReindeer] += 1
+                elif(distances[numberOfSeconds] == highestDistance and reindeerNum != farthestReindeer):
+                    if(is_int(farthestReindeer)):
+                        farthestReindeer = [farthestReindeer, reindeerNum]
+                    else:
+                        farthestReindeer.append(reindeerNum)
+            if(is_int(farthestReindeer)):
+                reindeerScores[farthestReindeer] += 1
+            else:
+                print(farthestReindeer)
+                for reindeers in farthestReindeer:
+                    print(reindeers)
+                    reindeerScores[reindeers] += 1
             numberOfSeconds = numberOfSeconds-1
         highestScore = 0
         for key, score in reindeerScores.items():
